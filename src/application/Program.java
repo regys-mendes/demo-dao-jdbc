@@ -5,6 +5,7 @@ import dao.SellerDao;
 import entities.Department;
 import entities.Seller;
 
+import java.util.Date;
 import java.util.List;
 
 public class Program {
@@ -20,7 +21,7 @@ public class Program {
         Department department = new Department(2, null);
         List<Seller> list = sellerDao.findByDepartment(department);
 
-        for (Seller obj : list){
+        for (Seller obj : list) {
             System.out.println(obj);
         }
         System.out.println();
@@ -28,8 +29,15 @@ public class Program {
         System.out.println("TEST 3: Seller [findAll] ");
         list = sellerDao.findAll();
 
-        for (Seller obj : list){
+        for (Seller obj : list) {
             System.out.println(obj);
         }
+        System.out.println();
+
+        System.out.println("TEST 4: Seller [Insert] ");
+        Seller newSeller = new Seller(0, "Regys", "example@gmail.com", new Date(), 4000.0, department);
+        sellerDao.insert(newSeller);
+        System.out.println("Inserted! New Id = " + newSeller.getId());
+
     }
 }
