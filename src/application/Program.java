@@ -2,14 +2,19 @@ package application;
 
 import dao.DaoFactory;
 import dao.SellerDao;
+import db.DbException;
 import entities.Department;
 import entities.Seller;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Program {
     static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
         System.out.println("TEST 1: Seller [findById] ");
@@ -35,7 +40,7 @@ public class Program {
         System.out.println();
 
         System.out.println("TEST 4: Seller [Insert] ");
-        Seller newSeller = new Seller(0, "Regys", "example@gmail.com", new Date(), 4000.0, department);
+        Seller newSeller = new Seller(0, "Pop", "example@gmail.com", new Date(), 2200.0, department);
         sellerDao.insert(newSeller);
         System.out.println("Inserted! New Id = " + newSeller.getId());
         System.out.println();
@@ -45,5 +50,14 @@ public class Program {
         seller.setName("Bob");
         sellerDao.update(seller);
         System.out.println("Update Completed!");
+        System.out.println();
+
+        System.out.println("TEST 6: Seller [Delete] ");
+        System.out.println("Enter id for delete: ");
+          int id = sc.nextInt();
+          sellerDao.deleteById(id);
+          System.out.println("Delete Completed! ");
+
+        sc.close();
     }
 }
