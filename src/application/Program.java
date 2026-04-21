@@ -2,11 +2,9 @@ package application;
 
 import dao.DaoFactory;
 import dao.SellerDao;
-import db.DbException;
 import entities.Department;
 import entities.Seller;
 
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
